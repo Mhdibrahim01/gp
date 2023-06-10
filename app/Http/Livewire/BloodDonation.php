@@ -59,11 +59,7 @@ class BloodDonation extends Component
     public function updatedSelectedCenter($value)
     {
         $this->appointments = AppointmentSlot::with('appointments')->where('center_id', $value)->whereNull('deleted_at')
-<<<<<<< HEAD
             ->where('date', '>', Carbon::now('Africa/Cairo')->toDateString())->where('is_available', 1)->get();
-=======
-        ->where('date', '>', Carbon::now('Africa/Cairo')->toDateString())->where('is_available',1)->get();
->>>>>>> origin/main
 
 
         $user_id = auth()->user()->id;
@@ -160,11 +156,9 @@ $user_name=auth()->user()->name;
                     ->sendToDatabase($centerUser);
                 toastr()->success('تم حجز موعد التبرع بنجاح');
                 session()->flash('success', 'تم حجز موعد التبرع بنجاح',);
-<<<<<<< HEAD
                 return 'success';
-=======
+
                 return    'success';
->>>>>>> origin/main
 
 
             }

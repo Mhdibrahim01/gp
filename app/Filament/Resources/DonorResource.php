@@ -33,35 +33,26 @@ class DonorResource extends Resource
                     ->label('الاسم'),
                 TextColumn::make('age')
                     ->sortable()
-<<<<<<< HEAD
                     ->label('تاريخ الميلاد'),
-                TextColumn::make('gender')
-                    ->sortable()
-                    ->label(' الجنس'),
-=======
-                    ->label('تاريخ الميلاد')  ,
-                    TextColumn::make('gender')
+               
+             TextColumn::make('gender')
                     ->sortable()
                     ->label(' الجنس')  ,
->>>>>>> origin/main
 
                 TextColumn::make('BloodType.blood_type')
                     ->searchable()
                     ->sortable()
                     ->label('فصيلة الدم'),
-<<<<<<< HEAD
                 TextColumn::make('last_donation_date')
                     ->label('تاريخ اخر تبرع'),
                 TextColumn::make('total_donations')
                     ->sortable()
                     ->label('عدد التبرعات'),
-=======
                     TextColumn::make('last_donation_date')
                     ->label('تاريخ اخر تبرع'),
                     TextColumn::make('total_donations')
                      ->sortable()
                      ->label('عدد التبرعات'),
->>>>>>> origin/main
                 ToggleIconColumn::make('is_eligible')
                     ->label('مؤهل')
                     ->translateLabel()
@@ -69,16 +60,10 @@ class DonorResource extends Resource
                     ->onColor('success')
                     ->offColor('danger')
                     ->size('xl')
-<<<<<<< HEAD
                     ->hidden(fn() => !auth()->user()->isCenter())
-=======
-                ->hidden(fn () =>  !auth()->user()->isCenter())
->>>>>>> origin/main
-
-
             ])
             ->filters([
-                //
+            
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
@@ -94,10 +79,7 @@ class DonorResource extends Resource
             'index' => Pages\ManageDonors::route('/'),
         ];
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public static function getEloquentQuery(): Builder
     {
         if (auth()->user()->isCenter()) {

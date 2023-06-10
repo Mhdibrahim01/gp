@@ -13,20 +13,13 @@ class Appointment extends Model
     {
         return $this->belongsTo(AppointmentSlot::class, 'appointment_slot_id')->withTrashed();
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
+
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-<<<<<<< HEAD
-=======
-public function center(): \Illuminate\Database\Eloquent\Relations\HasOneThrough
-{
-    return $this->hasOneThrough(Center::class, AppointmentSlot::class, 'id', 'id', 'appointment_slot_id', 'center_id');
->>>>>>> origin/main
+
 
     public function center(): \Illuminate\Database\Eloquent\Relations\HasOneThrough
     {

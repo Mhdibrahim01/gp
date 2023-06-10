@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class BloodTest extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
+
     public function donation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Donation::class);

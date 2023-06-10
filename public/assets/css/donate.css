@@ -755,6 +755,7 @@ margin-top: 2px;
     margin-top: -45px;
 
 }
+
 .first{
     margin-top: 100px;
     padding:0 auto;
@@ -779,11 +780,11 @@ margin-top: 2px;
     width: 750px;
 
 }
-input[type="text"], input[type="email"], input[type="password"], input[type="number"], select {
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
     direction:rtl;
-    padding: 7px;
     border-radius: 8px;
     border: 2px solid #dc3545;
+    font-family: 'Droid Arabic Kufi', serif !important;
     margin-bottom: 10px;
     width: 100%;
 }

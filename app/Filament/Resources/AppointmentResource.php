@@ -19,12 +19,7 @@ class AppointmentResource extends Resource
     protected static ?string $navigationLabel = 'سجل الحجوزات ';
     protected static ?string $modelLabel = ' سجل الحجوزات ';
     protected static ?string $pluralLabel = ' سجل الحجوزات ';
-<<<<<<< HEAD
-    protected static ?string $navigationIcon = 'heroicon-o-calendar';
-
-=======
     protected static ?string $navigationIcon = 'heroicon-s-calendar';
->>>>>>> origin/main
     public static function table(Table $table): Table
     {
         return $table
@@ -87,14 +82,10 @@ class AppointmentResource extends Resource
                 //
             ])
             ->actions([
-<<<<<<< HEAD
                 Tables\Actions\DeleteAction::make(),
 
-
-=======
                 Tables\Actions\DeleteAction::make()
             ,
->>>>>>> origin/main
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

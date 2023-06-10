@@ -46,50 +46,48 @@ class ManageAppointmentSlots extends ManageRecords
         // The appointment slots will be created at the specified intervals, and each slot will have the specified available capacity.
         // The code will also log a message to the console indicating that the appointment slots were created successfully.
 
-<<<<<<< HEAD
         for ($i = 1; $i <
         4; $i++) {
-=======
-        for ($i = 0; $i < 3; $i++) {
->>>>>>> origin/main
-            $date = Carbon::tomorrow()->addDays($i);
+            for ($i = 0; $i < 3; $i++) {
+                $date = Carbon::tomorrow()->addDays($i);
 
-            foreach ($centers as $center) {
-                // Check if an appointment slot already exists for this date and center
+                foreach ($centers as $center) {
+                    // Check if an appointment slot already exists for this date and center
 
-                $existingSlot = AppointmentSlot::where('date', $date->format('Y-m-d'))
-                    ->where('center_id', $center->id)
-                    ->first();
+                    $existingSlot = AppointmentSlot::where('date', $date->format('Y-m-d'))
+                        ->where('center_id', $center->id)
+                        ->first();
 
-                if ($existingSlot) {
-                    // If an appointment slot already exists, update its available capacity
-                    $existingSlot->available_capacity = $center->maximum_capacity;
-                    $existingSlot->save();
-                } else {
-                    // If an appointment slot does not already exist, create a new one
-                    // Calculate the start and end times for the appointment slots
-                    $startTime = Carbon::parse($center->opening_time);
-                    $endTime = Carbon::parse($center->closing_time)->subMinutes($center->minimum_duration);
+                    if ($existingSlot) {
+                        // If an appointment slot already exists, update its available capacity
+                        $existingSlot->available_capacity = $center->maximum_capacity;
+                        $existingSlot->save();
+                    } else {
+                        // If an appointment slot does not already exist, create a new one
+                        // Calculate the start and end times for the appointment slots
+                        $startTime = Carbon::parse($center->opening_time);
+                        $endTime = Carbon::parse($center->closing_time)->subMinutes($center->minimum_duration);
 
 
-                    // Create appointment slots at the specified interval
-                    $interval = CarbonInterval::minutes($center->minimum_duration);
-                    $currentSlotTime = $startTime->copy();
+                        // Create appointment slots at the specified interval
+                        $interval = CarbonInterval::minutes($center->minimum_duration);
+                        $currentSlotTime = $startTime->copy();
 
-                    while ($currentSlotTime->lte($endTime)) {
-                        // Create a new appointment slot
-                        $slot = new AppointmentSlot([
-                            'center_id' => $center->id,
-                            'date' => $date->format('Y-m-d'),
-                            'start_time' => $currentSlotTime->format('H:i'),
-                            'end_time' => $currentSlotTime->copy()->addMinutes($center->minimum_duration)->format('H:i'),
-                            'available_capacity' => $center->maximum_capacity,
-                        ]);
-                        // Save the appointment slot to the database
-                        $slot->save();
+                        while ($currentSlotTime->lte($endTime)) {
+                            // Create a new appointment slot
+                            $slot = new AppointmentSlot([
+                                'center_id' => $center->id,
+                                'date' => $date->format('Y-m-d'),
+                                'start_time' => $currentSlotTime->format('H:i'),
+                                'end_time' => $currentSlotTime->copy()->addMinutes($center->minimum_duration)->format('H:i'),
+                                'available_capacity' => $center->maximum_capacity,
+                            ]);
+                            // Save the appointment slot to the database
+                            $slot->save();
 
-                        $currentSlotTime->add($interval);
+                            $currentSlotTime->add($interval);
 
+                        }
                     }
                 }
             }

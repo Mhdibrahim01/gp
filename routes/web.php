@@ -17,7 +17,6 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-<<<<<<< HEAD
 
 Route::get('/', [\App\Http\Controllers\DonationController::class, 'index'])->name('index');
 
@@ -38,26 +37,7 @@ Route::middleware(['auth','verified'])->group(function (){
 });
 
 
-Auth::routes(['verify' => true]);
-
-=======
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
-Route::get('/donation', function () {
-    return view('donation');
-})->middleware(['auth', 'verified'])->name('donation');
-
-Route::get('/appointments', function () {
-    return view('appointments');
-})->middleware(['auth', 'verified'])->name('appointments');
-
 
 
 Auth::routes(['verify' => true]);
 
->>>>>>> origin/main

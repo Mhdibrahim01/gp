@@ -33,7 +33,6 @@ class DonationResource extends Resource
         return $form
             ->schema([
                 fieldset::make('التحليل')
-<<<<<<< HEAD
                     ->relationship('blood_test')
                     ->schema([
                         Card::make()->
@@ -74,7 +73,6 @@ class DonationResource extends Resource
                     ->schema([
                         select::make('blood_type_id')->label('فصيلة الدم')->relationship('bloodType', 'blood_type'),
                     ])
-=======
                 ->relationship('blood_test')
                 ->schema([
                     Card::make()->
@@ -115,14 +113,12 @@ class DonationResource extends Resource
                        ->schema([
                          select::make('blood_type_id')->label('فصيلة الدم')->relationship('bloodType', 'blood_type'),
                        ])
->>>>>>> origin/main
 
             ]);
     }
     public static function table(Table $table): Table
     {
         return $table
-<<<<<<< HEAD
             ->columns([
                 Tables\Columns\TextColumn::make('donorName.name')
                     ->searchable()
@@ -150,7 +146,6 @@ class DonationResource extends Resource
                     ->size('xl')
                     ->hidden(fn() => !auth()->user()->isCenter())
             ])
-=======
                 ->columns([
                     Tables\Columns\TextColumn::make('donorName.name')
                         ->searchable()
@@ -179,7 +174,6 @@ class DonationResource extends Resource
                         ->hidden(fn () =>  !auth()->user()->isCenter())
                 ])
 
->>>>>>> origin/main
             ->filters([
                 //
             ])
@@ -194,21 +188,18 @@ class DonationResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\BulkAction::make('approve')
-<<<<<<< HEAD
                     ->action(fn(Collection $records) => $records->each->approve())
                     ->requiresConfirmation()
                     ->color('success')
                     ->icon('heroicon-o-check')
                     ->label('تأكيد التبرع')
 
-=======
                 ->action(fn (Collection $records) => $records->each->approve())
                 ->requiresConfirmation()
                 ->color('success')
                 ->icon('heroicon-o-check')
                 ->label('تأكيد التبرع')
              
->>>>>>> origin/main
                 ,
                 FilamentExportBulkAction::make('تصدير')
 

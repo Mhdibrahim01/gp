@@ -25,8 +25,13 @@
                 <li><a href="{{ route('donation') }}">تبرع</a></li>
                 <li class="active"><a href="{{ route('prevdonation') }}">{{ __('prev_donation') }}</a></li>
                 <li><a href="{{ route('appointments') }}">{{ ((__('prev_appointment'))) }}</a></li>
+                @if (\Illuminate\Support\Facades\Route::currentRouteName()== 'register')
+                <li><a href="{{ route('login') }}">{{ ((__('login'))) }}</a></li>
 
-                <li><a class="scroll" href="#about-us">نحن</a></li>
+                @else
+                <li><a href="{{ route('register') }}">{{ ((__('register'))) }}</a></li>
+
+                @endif
             </ul>
         </div>
     </div>

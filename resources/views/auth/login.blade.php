@@ -1,5 +1,4 @@
 @extends('layouts.auth')
-<<<<<<< HEAD
 @section('title')
     تسجيل الدخول
 @endsection
@@ -9,10 +8,4 @@
                @livewire('login')
         </div>
     </div>
-=======
-@section('content')
-
-               @livewire('login')
-          
->>>>>>> origin/main
 @endsection

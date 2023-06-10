@@ -79,10 +79,7 @@ class BloodInventoryResource extends Resource
             'index' => Pages\ManageBloodInventories::route('/'),
         ];
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public static function getEloquentQuery(): Builder
     {
         if (auth()->user()->isAdmin()) {

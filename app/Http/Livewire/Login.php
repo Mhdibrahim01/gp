@@ -17,41 +17,27 @@ class Login extends Component
     {
         $this->validateOnly($fields);
     }
-<<<<<<< HEAD
 
-    public function authenticate()
-    {
-        $this->validate();
-=======
+   
+
        public function authenticate()
        {
-           $this->validate();
->>>>>>> origin/main
+    $this->validate();
 
            if (!Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
                $this->addError('email', trans('auth.failed'));
 
                return;
            }
-           if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('centersup')) {
+           if(auth()->user()->isAdmin() || auth()->user()->isCenter()) {
                return redirect()->intended('admin');
            }
            return redirect()->intended(route('index'));
 
-<<<<<<< HEAD
-            return;
-        }
-        if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('centersup')) {
-            return redirect()->intended('admin');
-        }
-        return redirect()->intended(route('index'));
-
-
     }
-=======
 
-       }
->>>>>>> origin/main
+
+       
 
     public function render()
     {

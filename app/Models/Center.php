@@ -15,34 +15,22 @@ class Center extends Model
     {
         return $this->hasMany(Donation::class);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public function city(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(City::class);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public function appointmentSlots(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(AppointmentSlot::class);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public function government(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Government::class);

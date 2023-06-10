@@ -61,24 +61,16 @@ class AppointmentSlotResource extends Resource
                 TextColumn::make('available_capacity')
                     ->searchable()
                     ->label('السعة المتاحة'),
-<<<<<<< HEAD
-                ToggleIconColumn::make('is_available')
-=======
+                    
                     ToggleIconColumn::make('is_available')
 
->>>>>>> origin/main
                     ->label('الحالة')
                     ->translateLabel()
                     ->alignCenter()
                     ->onColor('success')
                     ->offColor('danger')
                     ->size('xl')
-<<<<<<< HEAD
                     ->hidden(fn() => !auth()->user()->isCenter())
-=======
-                    ->hidden(fn () =>  !auth()->user()->isCenter())
-
->>>>>>> origin/main
 
 
             ])
@@ -109,7 +101,6 @@ class AppointmentSlotResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
                 Tables\Actions\BulkAction::make('available')
-<<<<<<< HEAD
                     ->action(fn(Collection $records) => $records->each->available())
                     ->requiresConfirmation()
                     ->color('success')
@@ -121,7 +112,6 @@ class AppointmentSlotResource extends Resource
                     ->color('danger')
                     ->icon('heroicon-o-check')
                     ->label('الغاء المواعيد')
-=======
                 ->action(fn (Collection $records) => $records->each->available())
                 ->requiresConfirmation()
                 ->color('success')
@@ -133,7 +123,6 @@ class AppointmentSlotResource extends Resource
                 ->color('danger')
                 ->icon('heroicon-o-check')
                 ->label('الغاء المواعيد')
->>>>>>> origin/main
             ]);
     }
 

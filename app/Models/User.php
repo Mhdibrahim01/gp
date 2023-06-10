@@ -54,15 +54,12 @@ class User extends Authenticatable implements FilamentUser, HasName
     {
         return $this->hasRole('admin') || $this->hasRole('centersup');
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/main
     public function centers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Center::class);
     }
-<<<<<<< HEAD
+
 
     public function donor(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
@@ -79,60 +76,16 @@ class User extends Authenticatable implements FilamentUser, HasName
         return $this->hasOne(Center::class);
     }
 
-    public function getFilamentName(): string
-    {
-        if ($this->hasRole('admin')) {
-            return 'Admin';
-        } elseif ($this->hasRole('centersup')) {
-            return $this->center->name;
-        }
-        return 'unknown';
-    }
-
-    public function isAdmin(): bool
-    {
-        return $this->hasRole('admin');
-    }
-
-    public function isCenter(): bool
-    {
-        return $this->hasRole('centersup');
-    }
-
-    public function isDonor(): bool
-    {
-        return $this->hasRole('donor');
-    }
-
-    public function last_appointment(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(Appointment::class)->latestOfMany();
-=======
-public function donor(): \Illuminate\Database\Eloquent\Relations\HasOne
-{
-    return $this->hasOne(Donor::class);
-}
-public function role(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-{
-    return $this->belongsTo(Role::class);
-}
-
-public function center(): \Illuminate\Database\Eloquent\Relations\HasOne
-{
-    return $this->hasOne(Center::class);
-}
 public function getFilamentName(): string
 {
     if($this->hasRole('admin')) {
         return 'Admin';
     } elseif($this->hasRole('centersup')) {
         return $this->center->name;
->>>>>>> origin/main
     }
     return 'unknown';
 }
-<<<<<<< HEAD
-=======
+
 public function isAdmin(): bool
 {
     return $this->hasRole('admin');
@@ -150,4 +103,4 @@ public function last_appointment(): \Illuminate\Database\Eloquent\Relations\HasO
     return $this->hasOne(Appointment::class)->latestOfMany();
 }
 }
->>>>>>> origin/main
+
