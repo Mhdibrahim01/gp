@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Neuton:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=NTR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+@import url("http://fonts.googleapis.com/earlyaccess/droidarabickufi.css");
+
+body{
+    font-family: "Neuton", serif;
+}
+.center_name
+{
+    font-size: 20px;
+    margin-top:18px ;
+    font-family: "Droid Arabic Kufi", "Droid Sans", sans-serif;
+
+}
