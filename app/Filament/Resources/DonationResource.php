@@ -73,46 +73,8 @@ class DonationResource extends Resource
                     ->schema([
                         select::make('blood_type_id')->label('فصيلة الدم')->relationship('bloodType', 'blood_type'),
                     ])
-                ->relationship('blood_test')
-                ->schema([
-                    Card::make()->
-                    schema([
-                       Select::make('hepatitis_b_result')->options([
-                            'negative' => 'سلبي',
-                               'positive' => 'موجب',
-                               'indeterminate' => 'غير محدد',
-                       ])
-                       ->label('نتيجة فحص الالتهاب الكبدي ب'),
-                       Select::make('hepatitis_c_result')->options([
-                            'negative' => 'سلبي',
-                               'positive' => 'موجب',
-                               'indeterminate' => 'غير محدد',
-                       ])           ->label('نتيجة فحص الالتهاب الكبدي ج')
-                       ])->columns(2),
-                       Card::make()->
-                       schema([
-                       Select::make('syphilis_result')->options([
-                            'negative' => 'سلبي',
-                               'positive' => 'موجب',
-                               'indeterminate' => 'غير محدد',
-                       ])
-                       ->label('نتيجة فحص الزهري'),
-                       Select::make('malaria_result')->options([
-                            'negative' => 'سلبي',
-                               'positive' => 'موجب',
-                               'indeterminate' => 'غير محدد',
-                       ])
-                       ->label('نتيجة فحص الملاريا'),
-                       ])->columns(2),
-                      TextArea::make('note')->label('ملاحظات')
-                      ->rows(2)
-                      ->columnSpan(2),
-                       ]),
-                       Fieldset::make('فصيلة الدم')
-                       ->relationship('donor')
-                       ->schema([
-                         select::make('blood_type_id')->label('فصيلة الدم')->relationship('bloodType', 'blood_type'),
-                       ])
+           
+                   
 
             ]);
     }
@@ -146,33 +108,8 @@ class DonationResource extends Resource
                     ->size('xl')
                     ->hidden(fn() => !auth()->user()->isCenter())
             ])
-                ->columns([
-                    Tables\Columns\TextColumn::make('donorName.name')
-                        ->searchable()
-                        ->sortable()
-                        ->label('الاسم'),
-                    Tables\Columns\TextColumn::make('center.name')
-                        ->searchable()
-                        ->sortable()
-                        ->label('المركز'),
-                    Tables\Columns\TextColumn::make('donation_date')
-                        ->searchable()
-                        ->sortable()
-                        ->label('التاريخ')
-                        ->date('d-M-Y'),
-                    Tables\Columns\TextColumn::make('donor.bloodType.blood_type')
-                        ->searchable()
-                        ->sortable()
-                        ->label('فصيلة الدم'),
-                        ToggleIconColumn::make('is_approved')
-                        ->label('الحالة')
-                        ->translateLabel()
-                        ->alignCenter()
-                        ->onColor('success')
-                        ->offColor('danger')
-                        ->size('xl')
-                        ->hidden(fn () =>  !auth()->user()->isCenter())
-                ])
+                
+             
 
             ->filters([
                 //

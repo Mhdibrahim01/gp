@@ -9,9 +9,9 @@
                         <li class="list-group-item">{{ __('lastDonationDate') }}
                             :  {{auth()->user()->donor->last_donation_date}}
                         </li>
-                        <li class="list-group-item">{{ __('nextDonationDate') }}: {{Carbon\Carbon::parse(auth()->user()->donor->last_donation_date)->addMonth(3)->diffForHumans() }}</li>
+                        <li class="list-group-item">{{ __('nextDonationDate') }}: {{auth()->user()->donor->last_donation_date== null ? 'يمكنك الان' : Carbon\Carbon::parse(auth()->user()->donor->last_donation_date)->addMonth(3)->translatedFormat('Y-m-d')}}</li>
                         <li class="list-group-item">{{ __('totalDonation') }}: {{auth()->user()->donor->total_donations}}</li>
-                        <li class="list-group-item">{{ __('bloodType') }}:  {{auth()->user()->donor->bloodType->blood_type}}</li>
+                        <li class="list-group-item">{{ __('bloodType') }}:  {{auth()->user()->donor->bloodType->blood_type?? ''}}</li>
                     </ul>
 
                 </div>

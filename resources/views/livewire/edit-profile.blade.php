@@ -30,7 +30,7 @@
                 </span>
                             @enderror
                         </div>
-                        <button class="btn btn-success" type="submit">
+                        <button class="btn btn-danger" type="submit">
                             حفظ
                             <div wire:loading wire:target="editProfile">
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -70,7 +70,7 @@
                                    wire:model="password_confirmation">
 
                         </div>
-                        <button class="btn btn-success" type="submit">
+                        <button class="btn btn-danger" type="submit">
                             حفظ
                             <div wire:loading wire:target="editPassword">
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
