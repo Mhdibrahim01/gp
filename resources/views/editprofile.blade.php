@@ -1,6 +1,7 @@
-
-
 @extends('layouts.donate')
+@section('title')
+    {{ __('profile')  }}
+@endsection
 @section('content')
 
     <div class="container">

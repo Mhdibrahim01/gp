@@ -102,7 +102,11 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->color('warning'),
+                    ->color('warning')
+                    ->icon('heroicon-o-pencil-alt'),
+                    Tables\Actions\DeleteAction::make()
+                    ->color('danger')
+                    ->icon('heroicon-o-trash'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

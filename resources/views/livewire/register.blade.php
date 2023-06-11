@@ -1,7 +1,7 @@
 <form class="form-horizontal mt-5 shadow-lg" wire:submit.prevent='register'>
 
     @csrf
-    <h2>التسجيل للتبرع</h2>
+    <h2>تسجيل متبرع</h2>
 
     <div class="form-group mb-3">
 

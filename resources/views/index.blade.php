@@ -146,22 +146,12 @@
 <footer>
     <div class="siteFooterBar">
         <div class="content1">
-            <div class="foot">2023 © All rights reserved.</div>
+            <div class="foot mb-5">2023 © All rights reserved.</div>
         </div>
     </div>
-    <div class="footer-content">
+    <div class="footer-content ">
         <p>من بين كل عشرة أشخاص يدخلون المستشفى يحتاج مريض واحد لنقل الدم بشكل ضروري لعلاج المرض أو إنقاذ الحياة</p>
-        <div class="socials">
-            <ul class="sci">
-                <li><a href="https://" target="_blank"><i
-                            class="fab fa-facebook"></i></a>
-                </li>
-                <li><a href="https://" target="_blank"><i
-                            class="fab fa-instagram"></i></a></li>
-                <li><a href="http://" target="_blank"><i class="fas fa-globe"></i></a>
-                </li>
-            </ul>
-        </div>
+     
     </div>
 
 

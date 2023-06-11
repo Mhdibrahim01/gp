@@ -82,10 +82,9 @@ class AppointmentResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
-
                 Tables\Actions\DeleteAction::make()
-            ,
+                ->icon('heroicon-o-trash'),
+            
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

@@ -28,7 +28,10 @@ class DonationLineChart extends LineChartWidget
         if ($centerId && !auth()->user()->hasRole('centersup')) {
             $query->where('center_id', $centerId);
         }
-        return $query->groupBy('year')->pluck('year', 'year')->toArray();
+        $years = $query->groupBy('year')->pluck('year')->toArray();
+        $lastYear = max($years);
+        $filters = array_merge([$lastYear], $years);
+        return array_combine($filters, $filters);
     }
 
     protected function getData(): array
@@ -50,32 +53,52 @@ class DonationLineChart extends LineChartWidget
             12 => 'ديسمبر',
         ];
         $donationMonthsQuery = Donation::query()->selectRaw('EXTRACT(MONTH FROM donation_date) as month');
-        if ($centerId && !auth()->user()->hasRole('centersup')) {
+        if ($centerId && auth()->user()->hasRole('centersup')) {
             $donationMonthsQuery->where('center_id', $centerId);
         }
+       
         $donationMonths = $donationMonthsQuery->groupBy('month')->pluck('month')->toArray();
         $monthNames = array_map(fn($month) => $months[$month] ?? $month, $donationMonths);
-        $donationsQuery = Donation::query()->selectRaw('EXTRACT(MONTH FROM donation_date) as month, COUNT(*) as count');
-        if ($centerId && !auth()->user()->hasRole('centersup')) {
+    
+        $donationYearsQuery = Donation::query()->selectRaw('EXTRACT(YEAR FROM donation_date) as year');
+        if ($centerId && auth()->user()->hasRole('centersup')) {
+            $donationYearsQuery->where('center_id', $centerId);
+        }
+        $donationYears = $donationYearsQuery->groupBy('year')->pluck('year')->toArray();
+        $lastYear = max($donationYears);
+        $activeFilter = $activeFilter ?? $lastYear;
+        $yearMonths = [];
+        foreach ($donationYears as $year) {
+            $yearMonths[$year] = [];
+            foreach ($months as $monthNumber => $monthName) {
+                $yearMonths[$year][$monthName] = 0;
+            }
+        }
+    
+        $donationsQuery = Donation::query()->selectRaw('EXTRACT(YEAR FROM donation_date) as year, EXTRACT(MONTH FROM donation_date) as month, COUNT(*) as count');
+        if ($centerId && auth()->user()->hasRole('centersup')) {
             $donationsQuery->where('center_id', $centerId);
         }
-        if ($activeFilter) {
-            $donationsQuery->whereRaw('EXTRACT(YEAR FROM donation_date) = ?', [$activeFilter]);
+        $donationsQuery->whereRaw('EXTRACT(YEAR FROM donation_date) = ?', [$activeFilter]);
+        $donationsPerMonth = $donationsQuery->groupBy('year', 'month')->get();
+        foreach ($donationsPerMonth as $donation) {
+            $monthName = $months[$donation->month];
+            $yearMonths[$donation->year][$monthName] = $donation->count;
         }
-        $donationsPerMonth = $donationsQuery->groupBy('month')->pluck('count')->toArray();
-
+        $filteredYearMonths = $yearMonths[$activeFilter] ?? [];
+        $nonEmptyMonths = array_filter($filteredYearMonths);
+    
         return [
             'datasets' => [
                 [
                     'label' => ' التبرعات',
-                    'data' => $donationsPerMonth,
+                    'data' => array_values($nonEmptyMonths),
                     'backgroundColor' => ['#881337'],
                     'borderColor' => '#f87171',
                     'hoverBackgroundColor' => '#fff',
-                    'stepped' => true,
                 ],
             ],
-            'labels' => $monthNames,
+            'labels' => array_keys($nonEmptyMonths),
         ];
     }
 }

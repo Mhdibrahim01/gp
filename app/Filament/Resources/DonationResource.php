@@ -119,6 +119,8 @@ class DonationResource extends Resource
                     ->icon('heroicon-o-clipboard-list')
                     ->label('تعديل نتائج التحاليل'),
                 Tables\Actions\ViewAction::make()
+                    ->icon('heroicon-o-eye')
+                    ->label('عرض ')
                 ,
 
             ])

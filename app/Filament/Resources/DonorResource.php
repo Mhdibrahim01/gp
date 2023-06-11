@@ -45,14 +45,10 @@ class DonorResource extends Resource
                     ->label('فصيلة الدم'),
                 TextColumn::make('last_donation_date')
                     ->label('تاريخ اخر تبرع'),
-                TextColumn::make('total_donations')
+                TextColumn::make('donation_count')
                     ->sortable()
                     ->label('عدد التبرعات'),
-                    TextColumn::make('last_donation_date')
-                    ->label('تاريخ اخر تبرع'),
-                    TextColumn::make('total_donations')
-                     ->sortable()
-                     ->label('عدد التبرعات'),
+                 
                 ToggleIconColumn::make('is_eligible')
                     ->label('مؤهل')
                     ->translateLabel()
@@ -66,7 +62,8 @@ class DonorResource extends Resource
             
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -83,8 +80,17 @@ class DonorResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         if (auth()->user()->isCenter()) {
-            return parent::getEloquentQuery()->join('donations', 'donations.donor_id', '=', 'donors.id')->where('donations.center_id', auth()->user()->center->id)->latest('donations.donation_date')->select('donors.*');
-
+            return parent::getEloquentQuery()
+            ->join('donations', 'donations.donor_id', '=', 'donors.id')
+            ->where('donations.center_id', auth()->user()->center->id)
+            ->latest('donations.donation_date')
+            ->select('donors.*')
+            ->selectSub(function ($query) {
+                $query->selectRaw('COUNT(DISTINCT donor_id)')
+                      ->from('donations')
+                      ->whereColumn('donor_id', 'donors.id');
+            }, 'donation_count')
+            ;
         }
         return parent::getEloquentQuery()->latest('id');
 

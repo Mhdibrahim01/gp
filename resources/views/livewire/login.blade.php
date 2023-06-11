@@ -18,7 +18,7 @@
     <div class="form-group mb-3">
 
         <input type="password" id="password" class="form-control @error('password') is-invalid @enderror"
-               placeholder="الرقم السري" wire:model.lazy="password" value="{{ old('password') }}"
+               placeholder="كلمة المرور" wire:model.lazy="password" value="{{ old('password') }}"
                autocomplete="password">
         @error('password')
         <span class="invalid-feedback" role="alert">

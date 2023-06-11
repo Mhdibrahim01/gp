@@ -18,6 +18,7 @@ class StatsOverview extends BaseWidget
         $mostCommonBloodType = BloodType::select('blood_types.id', 'blood_types.blood_type', DB::raw('count(*) as total'))
         ->join('donors', 'blood_types.id', '=', 'donors.blood_type_id')
         ->join('donations', 'donors.id', '=', 'donations.donor_id')
+        ->where('is_approved', '=', '1')
         ->groupBy('blood_types.id', 'blood_types.blood_type')
         ->where('donations.center_id', auth()->user()->center->id)
         ->orderBy('total', 'desc')
@@ -30,6 +31,7 @@ class StatsOverview extends BaseWidget
         $mostCommonBloodType = BloodType::select('blood_types.id', 'blood_types.blood_type', DB::raw('count(*) as total'))
         ->join('donors', 'blood_types.id', '=', 'donors.blood_type_id')
         ->join('donations', 'donors.id', '=', 'donations.donor_id')
+        ->where('is_approved', '=', '1')
         ->groupBy('blood_types.id', 'blood_types.blood_type')
         ->orderBy('total', 'desc')
         ->first();
@@ -71,7 +73,7 @@ class StatsOverview extends BaseWidget
             ->description('عدد التبرعات: '.$mostCommonBloodType->total)
             ->chart([7, 2, 10, 3, 15, 4, 17])
             ->color('danger'),
-            Card::make('المركز الأكثر تبرعا', $mostBdc->center->name)
+            Card::make('المركز الأكثر استقبالا للتبرعات', $mostBdc->center->name)
             ->description('عدد التبرعات: '.$mostBdc->total)
             ->chart([7, 2, 10, 3, 15, 4, 17])
             ->color('red'),

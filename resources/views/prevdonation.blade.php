@@ -1,4 +1,7 @@
 @extends('donation')
+@section('title')
+    {{ __('prev_donation')  }}
+@endsection
 @section('content')
     <div class="container-fluid">
         <div class="row ">
@@ -54,8 +57,8 @@
                                           target="_blank">
                                         @csrf
                                         <input type="hidden" name="donation_id" value="{{ $donate->id }}">
-                                        <button type="submit" class="btn btn-primary button-print">
-                                            <span>{{ __('print') }} <i class="fa fa-print"></i></span>
+                                        <button type="submit" class="button-38 mb-2">
+                                            <span> <i class="fa fa-print"></i></span>
                                         </button>
                                     </form>
 

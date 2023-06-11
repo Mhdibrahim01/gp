@@ -37,6 +37,8 @@ class CenterResource extends Resource
         ->schema([
         Card::make()->
         schema([
+            Fieldset::make('معلومات مركز التبرع بالدم')
+            ->schema([
         Grid::make(2)
         ->schema([
         Forms\Components\TextInput::make('name')
@@ -90,6 +92,7 @@ class CenterResource extends Resource
            ->placeholder('اختر مدينة مركز التبرع بالدم')
                 ]),
             ]),  
+            ]),
             ])->columnSpan(8) ,
             
                Card::make()
@@ -127,11 +130,10 @@ class CenterResource extends Resource
                 ->placeholder('الحد الأقصى للسعة')
                 ])])
                ])->columnSpan(4),
-
+Card::make()
+->schema([
                Fieldset::make('معلومات الحساب')
                ->relationship('user')
-                ->schema([
-                card::make()
                 ->schema([
                         TextInput::make('name')
                         ->required()
@@ -149,11 +151,13 @@ class CenterResource extends Resource
                         ->password()
                         ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                         ->dehydrated(fn ($state) => filled($state))
-                        ->required(fn (string $context): bool => $context === 'create'),
+                        ->required(fn (string $context): bool => $context === 'create')
+                        ->label('كلمة المرور'),
                         ])->columns(2),
                   ])
                         
-            ])->columns(12);   
+            ])->columns(12);
+              
     }
     public static function table(Table $table): Table
     {
@@ -173,7 +177,8 @@ class CenterResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->color('warning'),
+                    ->color('warning')
+                    ->icon('heroicon-o-pencil-alt'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

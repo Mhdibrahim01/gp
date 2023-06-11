@@ -23,6 +23,7 @@ class BloodInventoryResource extends Resource
     protected static ?string $navigationGroup = 'مراكز التبرع بالدم';
     protected static ?string $navigationLabel = ' مخزون الدم ';
     protected static ?string $pluralLabel = 'مخزون الدم ';
+    protected static ?string $modelLabel = 'مخزون الدم ';
     protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationIcon = 'heroicon-o-archive';
@@ -60,7 +61,8 @@ class BloodInventoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->icon('heroicon-o-trash'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
