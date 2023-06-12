@@ -10,11 +10,11 @@
                     <h5 class="card-title text-center"></h5>
                     <ul class="list-group">
                         <li class="list-group-item">{{ __('lastDonationDate') }}
-                            :  {{auth()->user()->donor->last_donation_date}}
+                            : <span class="list_an"> {{auth()->user()->donor->last_donation_date}} </span>
                         </li>
-                        <li class="list-group-item">{{ __('nextDonationDate') }}: {{auth()->user()->donor->last_donation_date== null ? 'يمكنك الان' : Carbon\Carbon::parse(auth()->user()->donor->last_donation_date)->addMonth(3)->translatedFormat('Y-m-d')}}</li>
-                        <li class="list-group-item">{{ __('totalDonation') }}: {{auth()->user()->donor->total_donations}}</li>
-                        <li class="list-group-item">{{ __('bloodType') }}:  {{auth()->user()->donor->bloodType->blood_type?? ''}}</li>
+                        <li class="list-group-item">{{ __('nextDonationDate') }}:  <span class="list_an">  {{auth()->user()->donor->last_donation_date== null ? 'يمكنك الان' : Carbon\Carbon::parse(auth()->user()->donor->last_donation_date)->addMonth(3)->translatedFormat('Y-m-d')}} </span></li>
+                        <li class="list-group-item">{{ __('totalDonation') }}:  <span class="list_an"> {{auth()->user()->donor->total_donations}} </span> </li>
+                        <li class="list-group-item">{{ __('bloodType') }}:   <span class="list_an"> {{auth()->user()->donor->bloodType->blood_type?? ''}} </span> </li>
                     </ul>
 
                 </div>

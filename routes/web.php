@@ -20,18 +20,18 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', [\App\Http\Controllers\DonationController::class, 'index'])->name('index');
 
-Route::get('/appointments', function () {
+Route::get('donor/appointments', function () {
     return view('appointments');
 })->middleware(['auth', 'verified'])->name('appointments');
 
 
 Route::middleware(['auth','verified'])->group(function (){
     Route::controller(\App\Http\Controllers\DonationController::class)->group(function () {
-        Route::post('donation/test', 'donationTest')->name('printDonation');
-        Route::get('/prev/donation', 'getDonations')->name('prevdonation');
-        Route::get('/donation','donate')->name('donation');
+        Route::post('donor/donation/test', 'donationTest')->name('printDonation');
+        Route::get('/donor/donations', 'getDonations')->name('prevdonation');
+        Route::get('/donate','donate')->name('donation');
     });
-    Route::get('donor/editProfile',function (){
+    Route::get('donor/profile',function (){
         return view('editProfile');
     })->name('profile');
 });

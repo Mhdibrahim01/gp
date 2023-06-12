@@ -4,23 +4,17 @@ namespace App\Http\Livewire;
 
 use App\Filament\Resources\AppointmentResource;
 use App\Models\User;
-use App\Notifications\AppointmentBookedNotification;
 use Carbon\Carbon;
 use App\Models\Center;
 use Filament\Notifications\Actions\Action;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 use App\Models\Government;
 use App\Models\Appointment;
 use Illuminate\Support\Str;
-use Livewire\WithPagination;
 use App\Models\AppointmentSlot;
-use GrahamCampbell\ResultType\Success;
 
 class BloodDonation extends Component
 {
-    use WithPagination;
 
     public $governments;
     public $centers;

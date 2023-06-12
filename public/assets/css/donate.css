@@ -834,7 +834,6 @@ select:focus {
     font-weight: bold;
 }
 .list_an{
-    
     color: #270101;
     font-weight: 500;
 }
@@ -863,16 +862,16 @@ select:focus {
     -webkit-user-select: none;
     touch-action: manipulation;
   }
-  
+
   .button-38:hover {
     background-color: rgb(249,250,251);
   }
-  
+
   .button-38:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
   }
-  
+
   .button-38:focus-visible {
     box-shadow: none;
   }

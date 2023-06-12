@@ -45,7 +45,7 @@ class DonorResource extends Resource
                     ->label('فصيلة الدم'),
                 TextColumn::make('last_donation_date')
                     ->label('تاريخ اخر تبرع'),
-                TextColumn::make('donation_count')
+                TextColumn::make('total_donations')
                     ->sortable()
                     ->label('عدد التبرعات'),
                  
@@ -89,7 +89,7 @@ class DonorResource extends Resource
                 $query->selectRaw('COUNT(DISTINCT donor_id)')
                       ->from('donations')
                       ->whereColumn('donor_id', 'donors.id');
-            }, 'donation_count')
+            }, 'total_donations')
             ;
         }
         return parent::getEloquentQuery()->latest('id');
