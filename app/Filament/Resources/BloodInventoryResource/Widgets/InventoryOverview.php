@@ -11,7 +11,7 @@ class InventoryOverview extends BaseWidget
     {
         $currentDate = Carbon::now()->format('Y-m-d');
 
-        if(auth()->user()->hasRole('centersup'))
+        if(auth()->user()->isCenter())
         {
             $bloodInventories = DB::table('blood_types')
             ->leftJoin('donors', 'blood_types.id', '=', 'donors.blood_type_id')

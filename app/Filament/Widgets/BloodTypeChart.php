@@ -14,12 +14,24 @@ protected static ?string $maxHeight = '290px';
 
     protected function getData(): array
     {
-        $bloodGroupCounts = DB::table('donors')
-        ->join('blood_types', 'donors.blood_type_id', '=', 'blood_types.id')
-        ->select('blood_types.blood_type', DB::raw('count(*) as count'))
-        ->groupBy('blood_types.blood_type')
-        ->get();
-        
+        if (auth()->user()->isAdmin()){
+                        $bloodGroupCounts = DB::table('donors')
+            ->join('blood_types', 'donors.blood_type_id', '=', 'blood_types.id')
+            ->select('blood_types.blood_type', DB::raw('count(*) as count'))
+            ->groupBy('blood_types.blood_type')
+            ->get();
+            
+        }
+        else{
+            $bloodGroupCounts = DB::table('donors')
+            ->join('blood_types', 'donors.blood_type_id', '=', 'blood_types.id')
+            ->join('donations', 'donors.id', '=', 'donations.donor_id')
+            ->select('blood_types.blood_type', DB::raw('count(*) as count'))
+            ->where('donations.center_id',auth()->user()->center->id)
+            ->groupBy('blood_types.blood_type')
+            ->get();
+        }
+   
     $bloodTypes = $bloodGroupCounts->pluck('blood_type')->map(function($value) {
         return strval($value);
     })->toArray();
