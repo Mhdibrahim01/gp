@@ -15,12 +15,12 @@ class DonorResource extends Resource
 {
     protected static ?string $model = Donor::class;
 
-    protected static ?string $navigationGroup = 'المتبرعين';
+    protected static ?string $navigationGroup = 'المستخدمين';
     protected static ?string $navigationLabel = 'المتبرعين';
     protected static ?string $pluralLabel = 'المتبرعين';
     protected static ?string $modelLabel = 'متبرع';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?int $navigationSort = 3;
 
     public static function table(Table $table): Table

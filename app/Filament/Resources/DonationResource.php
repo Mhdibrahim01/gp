@@ -21,7 +21,7 @@ use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
 class DonationResource extends Resource
 {
     protected static ?string $model = Donation::class;
-    protected static ?string $navigationGroup = 'مراكز التبرع بالدم';
+    protected static ?string $navigationGroup = 'التبرعات';
     protected static ?string $navigationLabel = 'سجل التبرعات';
     protected static ?string $pluralLabel = 'سجل التبرعات';
     protected static ?string $navigationIcon = 'heroicon-o-collection';

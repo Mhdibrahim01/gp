@@ -20,7 +20,7 @@ class BloodInventoryResource extends Resource
 {
     protected static ?string $model = BloodInventory::class;
 
-    protected static ?string $navigationGroup = 'مراكز التبرع بالدم';
+    protected static ?string $navigationGroup = 'التبرعات';
     protected static ?string $navigationLabel = ' مخزون الدم ';
     protected static ?string $pluralLabel = 'مخزون الدم ';
     protected static ?string $modelLabel = 'مخزون الدم ';

@@ -24,11 +24,10 @@ use App\Filament\Resources\CenterResource\Pages;
 class CenterResource extends Resource
 {
     protected static ?string $model = Center::class;
-    protected static ?string $navigationGroup = 'مراكز التبرع بالدم';
+    protected static ?string $navigationGroup = 'المستخدمين';
     protected static ?string $navigationLabel = 'مراكز التبرع بالدم';
     protected static ?string $pluralLabel = 'مراكز التبرع بالدم';
     protected static ?string $label = 'مركز التبرع بالدم';
-    protected static ?int $navigationSort = 1;
     protected static ?string $navigationIcon = 'heroicon-o-office-building';
 
     public static function form(Form $form): Form

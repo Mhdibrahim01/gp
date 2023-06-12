@@ -19,7 +19,7 @@ class AppointmentResource extends Resource
     protected static ?string $navigationLabel = 'سجل الحجوزات ';
     protected static ?string $modelLabel = ' سجل الحجوزات ';
     protected static ?string $pluralLabel = ' سجل الحجوزات ';
-    protected static ?string $navigationIcon = 'heroicon-s-calendar';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
     public static function table(Table $table): Table
     {
         return $table
